@@ -5,27 +5,27 @@ import RenderTag from "./RenderTag";
 
 const hotQuestions = [
   {
-    _id: 1,
+    _id: "1",
     title: "What are the best practices for writing clean code in JavaScript?",
   },
   {
-    _id: 2,
+    _id: "2",
     title: "How can I improve my problem-solving skills as a programmer?",
   },
   {
-    _id: 3,
+    _id: "3",
     title: "What are some effective strategies for debugging in Python?",
   },
-  { _id: 4, title: "How does the CSS Box Model work?" },
-  { _id: 5, title: "What are some common pitfalls to avoid when using Git?" },
+  { _id: "4", title: "How does the CSS Box Model work?" },
+  { _id: "5", title: "What are some common pitfalls to avoid when using Git?" },
 ];
 
 const popularTags = [
-  { _id: 1, name: "python", totalQuestions: 5 },
-  { _id: 2, name: "javascript", totalQuestions: 10 },
-  { _id: 3, name: "react", totalQuestions: 8 },
-  { _id: 4, name: "html", totalQuestions: 7 },
-  { _id: 5, name: "css", totalQuestions: 6 },
+  { _id: "1", name: "python", totalQuestions: 5 },
+  { _id: "2", name: "javascript", totalQuestions: 10 },
+  { _id: "3", name: "react", totalQuestions: 8 },
+  { _id: "4", name: "html", totalQuestions: 7 },
+  { _id: "5", name: "css", totalQuestions: 6 },
 ];
 
 const RightSidebar = () => {

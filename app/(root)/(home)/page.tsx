@@ -1,3 +1,4 @@
+import QuestionCard from "@/components/cards/QuestionCard";
 import HomeFilters from "@/components/home/HomeFilters";
 import Filter from "@/components/shared/Filter";
 import NoResult from "@/components/shared/NoResult";
@@ -8,32 +9,40 @@ import Link from "next/link";
 import React from "react";
 
 const Questions = [
-  // {
-  //   id: 1,
-  //   title: "How to use tailwindcss",
-  //   tags: [
-  //     { _id: 1, name: "Tailwindcss" },
-  //     { _id: 1, name: "Html" },
-  //   ],
-  //   author: "John Doe",
-  //   upvotes: 10,
-  //   views: 100,
-  //   answers: 2,
-  //   ceatedAt: "2022-01-01T12:00:00Z",
-  // },
-  // {
-  //   id: 2,
-  //   title: "Best practices for responsive web design",
-  //   tags: [
-  //     { _id: 2, name: "figma" },
-  //     { _id: 3, name: "ui/ux" },
-  //   ],
-  //   author: "Jane Smith",
-  //   upvotes: 15,
-  //   views: 120,
-  //   answers: 3,
-  //   ceatedAt: "2022-01-02T13:00:00Z",
-  // },
+  {
+    _id: "1", // Changed to string
+    title: "How to use tailwindcss",
+    tags: [
+      { _id: "1", name: "Tailwindcss" }, // Changed _id to string
+      { _id: "2", name: "Html" }, // Changed _id to string
+    ],
+    author: {
+      _id: "1", // Changed to string
+      name: "John Doe",
+      picture: "url/to/picture", // Added a placeholder value for picture
+    },
+    upvotes: 14,
+    views: 100,
+    answers: [],
+    ceatedAt: new Date("2024-04-01T12:00:00Z"), // Corrected typo in createdAt and converted string to Date object
+  },
+  {
+    _id: "2", // Changed to string
+    title: "Best practices for responsive web design",
+    tags: [
+      { _id: "3", name: "figma" }, // Changed _id to string
+      { _id: "4", name: "ui/ux" }, // Changed _id to string
+    ],
+    author: {
+      _id: "2", // Changed to string
+      name: "Jane Smith",
+      picture: "url/to/picture", // Added a placeholder value for picture
+    },
+    upvotes: 15,
+    views: 120,
+    answers: [],
+    ceatedAt: new Date("2024-03-02T13:00:00Z"), // Corrected typo in createdAt and converted string to Date object
+  },
 ];
 
 const Home = () => {
@@ -67,7 +76,19 @@ const Home = () => {
 
       <div className="mt-10 flex w-full flex-col gap-6">
         {Questions.length > 0 ? (
-          Questions.map((question) => "Question Card")
+          Questions.map((question) => (
+            <QuestionCard
+              key={question._id}
+              _id={question._id}
+              title={question.title}
+              tags={question.tags}
+              author={question.author}
+              upvotes={question.upvotes}
+              views={question.views}
+              answers={question.answers}
+              createdAt={question.ceatedAt}
+            />
+          ))
         ) : (
           <NoResult
             title="There is no question to show"
