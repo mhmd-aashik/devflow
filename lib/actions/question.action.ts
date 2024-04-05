@@ -1,8 +1,10 @@
 /* eslint-disable no-empty */
 "use server";
 
-export async function createQuestion(params) {
+import { connectToDatabase } from "../mongoose";
+
+export async function createQuestion(params: any) {
   try {
-    // connect to DB
+    await connectToDatabase();
   } catch (error) {}
 }
