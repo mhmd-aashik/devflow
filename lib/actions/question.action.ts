@@ -4,12 +4,10 @@
 import Question from "@/database/question.model";
 import { connectToDatabase } from "../mongoose";
 import Tag from "@/database/tag.model";
-import {
-  CreateQuestionParams,
-  GetQuestionsParams,
-} from "./shared.question.types";
+
 import User from "@/database/user.model";
 import { revalidatePath } from "next/cache";
+import { GetQuestionsParams, CreateQuestionParams } from "./shared.types";
 
 export async function getQuestions(params: GetQuestionsParams) {
   try {

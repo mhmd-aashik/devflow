@@ -1,6 +1,6 @@
-// import { IUser } from "@/mongodb";
+import { Schema } from "mongoose";
 
-import { IUser } from "@/database/user.model";
+import { IUser } from "@/mongodb";
 
 export interface CreateAnswerParams {
   content: string;
@@ -30,7 +30,7 @@ export interface DeleteAnswerParams {
 }
 
 export interface SearchParams {
-  query?: string | null;
+  query: string;
   type?: string | null;
 }
 
@@ -49,6 +49,21 @@ export interface ViewQuestionParams {
 export interface JobFilterParams {
   query: string;
   page: string;
+}
+
+export interface GetQuestionsParams {
+  page?: number;
+  pageSize?: number;
+  searchQuery?: string;
+  filter?: string;
+}
+
+export interface CreateQuestionParams {
+  title: string;
+  content: string;
+  tags: string[];
+  author: Schema.Types.ObjectId | IUser;
+  path: string;
 }
 
 export interface GetQuestionByIdParams {
@@ -72,6 +87,7 @@ export interface EditQuestionParams {
   questionId: string;
   title: string;
   content: string;
+  tags: string[];
   path: string;
 }
 
