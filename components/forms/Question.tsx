@@ -19,7 +19,6 @@ import { Editor } from "@tinymce/tinymce-react";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
 import { createQuestion } from "@/lib/actions/question.action";
-import { json } from "node:stream/consumers";
 import { usePathname, useRouter } from "next/navigation";
 
 const type: any = "create";
@@ -53,6 +52,7 @@ const Question = ({ mongoUserId }: Props) => {
         content: values.explanation,
         tags: values.tags,
         author: JSON.parse(mongoUserId),
+        path: pathname,
       });
       // navigate to homepage after question is created
       router.push("/");
