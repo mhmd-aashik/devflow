@@ -9,7 +9,6 @@ import React from "react";
 
 const Page = async () => {
   const result = await getAllUsers({});
-  console.log(result);
 
   return (
     <>
