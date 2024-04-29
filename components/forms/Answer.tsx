@@ -19,12 +19,12 @@ import { createAnswer } from "@/lib/actions/answer.action";
 import { usePathname } from "next/navigation";
 
 interface Props {
-  authorId: string;
+  userId: string;
   questionId: string;
   question: string;
 }
 
-const Answer = ({ authorId, questionId, question }: Props) => {
+const Answer = ({ userId, questionId, question }: Props) => {
   const pathname = usePathname();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -44,7 +44,7 @@ const Answer = ({ authorId, questionId, question }: Props) => {
     try {
       await createAnswer({
         content: values.answer,
-        author: JSON.parse(authorId),
+        author: JSON.parse(userId),
         question: JSON.parse(questionId),
         path: pathname,
       });
