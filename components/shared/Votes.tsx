@@ -1,4 +1,5 @@
 "use client";
+import { downVoteAnswer, upvoteAnswer } from "@/lib/actions/answer.action";
 import {
   downVoteQuestion,
   upVoteQuestion,
@@ -30,7 +31,7 @@ const Votes = ({
   hasSaved,
 }: Props) => {
   const pathname = usePathname();
-  // const router = useRouter();
+  const router = useRouter();
 
   const handleSave = () => {};
 
@@ -48,13 +49,13 @@ const Votes = ({
           path: pathname,
         });
       } else if (type === "Answer") {
-        // await downVoteQuestion({
-        //   questionId: JSON.parse(itemId),
-        //   userId: JSON.parse(userId),
-        //   hasupVoted,
-        //   hasdownVoted,
-        //   path: pathname,
-        // });
+        await upvoteAnswer({
+          answerId: JSON.parse(itemId),
+          userId: JSON.parse(userId),
+          hasupVoted,
+          hasdownVoted,
+          path: pathname,
+        });
       }
       // todo show toast notification
       return;
@@ -69,13 +70,13 @@ const Votes = ({
           path: pathname,
         });
       } else if (type === "Answer") {
-        // await downVoteQuestion({
-        //   questionId: JSON.parse(itemId),
-        //   userId: JSON.parse(userId),
-        //   hasupVoted,
-        //   hasdownVoted,
-        //   path: pathname,
-        // });
+        await downVoteAnswer({
+          answerId: JSON.parse(itemId),
+          userId: JSON.parse(userId),
+          hasupVoted,
+          hasdownVoted,
+          path: pathname,
+        });
       }
       // todo show toast notification
     }
