@@ -26,16 +26,14 @@ export const getTimeStamp = (createdAt: Date): string => {
 };
 
 // formatNumber M and K for views and upvotes and likes
-export function formatNumber(num: number): string {
-  let formattedNum: string = "";
-
-  if (Math.abs(num) >= 1e6) {
-    formattedNum = (num / 1e6).toFixed(2) + "M";
-  } else if (Math.abs(num) >= 1e3) {
-    formattedNum = (num / 1e3).toFixed(2) + "K";
+export const formatNumber = (num: number): string => {
+  if (num >= 1000000) {
+    const formattedNum = (num / 1000000).toFixed(1);
+    return `${formattedNum}M`;
+  } else if (num >= 1000) {
+    const formattedNum = (num / 1000).toFixed(1);
+    return `${formattedNum}K`;
   } else {
-    formattedNum = num.toString();
+    return num.toString();
   }
-
-  return formattedNum;
-}
+};
