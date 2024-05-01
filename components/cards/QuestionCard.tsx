@@ -22,7 +22,7 @@ interface QuestionProps {
   views: number;
   answers: Array<object>;
   createdAt: Date;
-  clerkId?: string | null;
+  clerkId?: string ;
 }
 
 const QuestionCard = ({
