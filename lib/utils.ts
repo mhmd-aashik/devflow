@@ -37,3 +37,14 @@ export const formatNumber = (num: number): string => {
     return num.toString();
   }
 };
+
+export function getJoinedDate(date: Date): string {
+  // Get month and year from the Date object
+  const month: string = date.toLocaleString("default", { month: "short" });
+  const year: number = date.getFullYear();
+
+  // Concatenate month and year
+  const joinedDate: string = `${month} ${year}`;
+
+  return joinedDate;
+}
