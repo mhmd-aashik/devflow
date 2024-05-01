@@ -12,7 +12,10 @@ import {
   CreateQuestionParams,
   GetQuestionByIdParams,
   QuestionVoteParams,
+  DeleteQuestionParams,
 } from "./shared.types";
+import Answer from "@/database/answer.model";
+import Interaction from "@/database/interaction.model";
 
 export async function getQuestions(params: GetQuestionsParams) {
   try {
@@ -157,6 +160,34 @@ export async function downVoteQuestion(params: QuestionVoteParams) {
     }
 
     // increment author's reputation by +5 for creating a question
+    revalidatePath(path);
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function deleteQuestion(params: DeleteQuestionParams) {
+  try {
+    connectToDatabase();
+
+    const { questionId, path } = params;
+
+    // delete the question
+    await Question.deleteOne({ _id: questionId });
+
+    // delete all answers associated with the question
+    await Answer.deleteMany({ question: questionId });
+
+    // delete all the interaction associated with the question
+    await Interaction.deleteMany({ question: questionId });
+
+    // pull the tag from the question when delete
+    await Tag.updateMany(
+      { questions: questionId },
+      { $pull: { questions: questionId } }
+    );
+
     revalidatePath(path);
   } catch (error) {
     console.log(error);

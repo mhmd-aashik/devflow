@@ -2,7 +2,7 @@ import { getUserAnswers } from "@/lib/actions/user.action";
 import { SearchParamsProps } from "@/types";
 import { Item } from "@radix-ui/react-menubar";
 import React from "react";
-import AnswerCard from "./AnswerCard";
+import AnswerCard from "../cards/AnswerCard";
 
 interface Props extends SearchParamsProps {
   userId: string;
