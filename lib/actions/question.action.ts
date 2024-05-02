@@ -200,7 +200,7 @@ export async function editQuestion(params: EditQuestionParams) {
   try {
     connectToDatabase();
 
-    const { questionId, title, content,  path } = params;
+    const { questionId, title, content, path } = params;
 
     const question =
       await Question.findByIdAndUpdate(questionId).populate("tags");
@@ -220,6 +220,21 @@ export async function editQuestion(params: EditQuestionParams) {
     throw error;
   }
 }
+
+export async function getHotQuestions() {
+  try {
+    connectToDatabase();
+    const hotQuestion = await Question.find({})
+      .sort({ views: -1, upvotes: -1 })
+      .limit(5); // in decending order big to small
+
+    return hotQuestion;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
 // export async function getAllUsers(params:) {
 //   try {
 //     connectToDatabase();
