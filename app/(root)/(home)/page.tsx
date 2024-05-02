@@ -10,7 +10,7 @@ import { SearchParamsProps } from "@/types";
 import Link from "next/link";
 import React from "react";
 
-const Home = async ({ searchParams }: SearchParamsProps) => {
+export default async function Home({ searchParams }: SearchParamsProps) {
   const result = await getQuestions({
     searchQuery: searchParams.q,
   });
@@ -22,7 +22,7 @@ const Home = async ({ searchParams }: SearchParamsProps) => {
 
         <Link href="/ask-question" className="flex justify-end max-sm:w-full">
           <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
-            Ask Question
+            Ask a Question
           </Button>
         </Link>
       </div>
@@ -32,15 +32,17 @@ const Home = async ({ searchParams }: SearchParamsProps) => {
           route="/"
           iconPosition="left"
           imgSrc="/assets/icons/search.svg"
-          placeholder="Search for Questions"
+          placeholder="Search for questions"
           otherClasses="flex-1"
         />
+
         <Filter
           filters={HomePageFilters}
-          otherClasses="min-h-[56px] sm:min-w[170px]"
+          otherClasses="min-h-[56px] sm:min-w-[170px]"
           containerClasses="hidden max-md:flex"
         />
       </div>
+
       <HomeFilters />
 
       <div className="mt-10 flex w-full flex-col gap-6">
@@ -60,10 +62,8 @@ const Home = async ({ searchParams }: SearchParamsProps) => {
           ))
         ) : (
           <NoResult
-            title="There is no question to show"
-            description=" Be the first to break the silence! 🚀 Ask a Question and kickstart the
-            discussion. our query could be the next big thing others learn from. Get
-            involved! 💡"
+            title="There’s no question to show"
+            description="Be the first to break the silence! 🚀 Ask a Question and kickstart the discussion. our query could be the next big thing others learn from. Get involved! 💡"
             href="/ask-question"
             linkTitle="Ask a Question"
           />
@@ -71,6 +71,4 @@ const Home = async ({ searchParams }: SearchParamsProps) => {
       </div>
     </>
   );
-};
-
-export default Home;
+}
