@@ -6,48 +6,15 @@ import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
 import { getQuestions } from "@/lib/actions/question.action";
+import { SearchParamsProps } from "@/types";
 import Link from "next/link";
 import React from "react";
 
-// const Questions = [
-//   {
-//     _id: "1", // Changed to string
-//     title: "How to use tailwindcss",
-//     tags: [
-//       { _id: "1", name: "Tailwindcss" }, // Changed _id to string
-//       { _id: "2", name: "Html" }, // Changed _id to string
-//     ],
-//     author: {
-//       _id: "1", // Changed to string
-//       name: "John Doe",
-//       picture: "url/to/picture", // Added a placeholder value for picture
-//     },
-//     upvotes: 14,
-//     views: 100,
-//     answers: [],
-//     createdAt: new Date("2024-04-01T12:00:00Z"), // Corrected typo in createdAt and converted string to Date object
-//   },
-//   {
-//     _id: "2", // Changed to string
-//     title: "Best practices for responsive web design",
-//     tags: [
-//       { _id: "3", name: "figma" }, // Changed _id to string
-//       { _id: "4", name: "ui/ux" }, // Changed _id to string
-//     ],
-//     author: {
-//       _id: "2", // Changed to string
-//       name: "Jane Smith",
-//       picture: "url/to/picture", // Added a placeholder value for picture
-//     },
-//     upvotes: 15,
-//     views: 120,
-//     answers: [],
-//     createdAt: new Date("2024-03-02T13:00:00Z"), // Corrected typo in createdAt and converted string to Date object
-//   },
-// ];
+const Home = async ({ searchParams }: SearchParamsProps) => {
+  const result = await getQuestions({
+    searchQuery: searchParams.q,
+  });
 
-const Home = async () => {
-  const result = await getQuestions({});
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
