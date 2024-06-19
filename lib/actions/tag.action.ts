@@ -17,7 +17,7 @@ export async function getTopInterractedTags(
   try {
     connectToDatabase();
 
-    const { userId, limit = 3 } = params;
+    const { userId } = params;
 
     const user = await User.findById(userId);
 
