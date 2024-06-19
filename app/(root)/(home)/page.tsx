@@ -11,6 +11,13 @@ import { SearchParamsProps } from "@/types";
 import Link from "next/link";
 import React from "react";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home | DevFlow",
+  description: "DevFlow is a platform for developers to ask and answer questions. It is a place for developers to share their knowledge and help each other.",
+};
+
 export default async function Home({ searchParams }: SearchParamsProps) {
   const result = await getQuestions({
     searchQuery: searchParams.q,
